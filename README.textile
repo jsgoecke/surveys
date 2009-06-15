@@ -9,7 +9,8 @@ Provides an example Adhearsion component that conducts call surveys. The compone
 h2. Requirements
 
 * <a href="http://adhearsion.com">Adhearsion v0.8+</a>
-* <a href="http://www.rubyonrails.org">Ruby on Rails v2.2.2</a>
+* <a href="http://www.rubyonrails.org">Ruby on Rails v2.3.2</a>
+* <a href="http://hobocentral.net/">Hobo v0.8.7</a>
 * A text to speech engine: Festival, Cepstral/VoiceForge or PlainTalk/Say
 
 h2. Install
