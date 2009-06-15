@@ -1,0 +1,443 @@
+<!-- AUTOMATICALLY GENERATED FILE - DO NOT EDIT -->
+
+<!-- ====== Main Navigation ====== -->
+
+<def tag="main-nav">
+  <navigation class="main-nav" merge-attrs param="default">
+    <nav-item href="#{base_url}/">Home</nav-item>
+    <nav-item with="&Question">Questions</nav-item>
+    <nav-item with="&Response">Responses</nav-item>
+    <nav-item with="&Survey">Surveys</nav-item>
+  </navigation>
+</def>
+
+
+
+  
+<!-- ====== Question Pages ====== -->
+
+
+<def tag="index-page" for="Question">
+  <page merge title="Questions">
+    <body: class="index-page question" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Questions</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="Question">
+  <page merge title="New Question">
+    <body: class="new-page question" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Question</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Question"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="Question">
+  <page merge title="Question">
+
+    <body: class="show-page question" param/>
+
+    <content: param>
+          <header param="content-header">
+            <a:survey param="parent-link">&laquo; <name/></a:survey>
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="active" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Question</a>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="question, order, valid_responses" param/>
+            <section param="collection-section">
+              <h3 param="collection-heading">Responses</h3>
+              
+              <collection:responses param/>
+            </section>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="Question">
+  <page merge title="Edit Question">
+
+    <body: class="edit-page question" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Question" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== Response Pages ====== -->
+
+
+<def tag="index-page" for="Response">
+  <page merge title="Responses">
+    <body: class="index-page response" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Responses</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="Response">
+  <page merge title="New Response">
+    <body: class="new-page response" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Response</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Response"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="Response">
+  <page merge title="Response">
+
+    <body: class="show-page response" param/>
+
+    <content: param>
+          <header param="content-header">
+            <a:question param="parent-link">&laquo; <name/></a:question>
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="" param/>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="callerid, guid, response" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="Response">
+  <page merge title="Edit Response">
+
+    <body: class="edit-page response" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Response" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== Survey Pages ====== -->
+
+
+<def tag="index-page" for="Survey">
+  <page merge title="Surveys">
+    <body: class="index-page survey" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Surveys</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <a action="new" to="&model" param="new-link"/>      
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="Survey">
+  <page merge title="New Survey">
+    <body: class="new-page survey" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New Survey</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create Survey"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="Survey">
+  <page merge title="Survey">
+
+    <body: class="show-page survey" param/>
+
+    <content: param>
+          <header param="content-header">
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="active" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit Survey</a>
+          </header>
+    
+          <section param="content-body">
+            <view:description param="description"/>
+            <section param="collection-section">
+              <h3 param="collection-heading">Questions</h3>
+              
+              <collection:questions param/>
+            </section>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="Survey">
+  <page merge title="Edit Survey">
+
+    <body: class="edit-page survey" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This Survey" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+
+
+  
+<!-- ====== User Pages ====== -->
+
+
+<def tag="index-page" for="User">
+  <page merge title="Users">
+    <body: class="index-page user" param/>
+    
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Users</h2>
+
+        <p param="count" if>There <count prefix="are"/></p>
+      </header>
+      
+      <section param="content-body">
+
+        <page-nav param="top-page-nav"/>
+
+        <collection param/>
+
+        <page-nav param="bottom-page-nav"/>
+
+
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="new-page" for="User">
+  <page merge title="New User">
+    <body: class="new-page user" param/>
+    
+    <content: param>
+      <section param="content-header">
+        <h2 param="heading">New User</h2>
+      </section>
+      
+      <section param="content-body">
+        <form param>
+          <submit: label="Create User"/>
+        </form>
+      </section>
+    </content:>
+  </page>
+</def>
+
+
+<def tag="show-page" for="User">
+  <page merge title="User">
+
+    <body: class="show-page user" param/>
+
+    <content: param>
+          <header param="content-header">
+            <h2 param="heading"><name/></h2>
+
+            <record-flags fields="administrator" param/>
+
+            <a action="edit" if="&can_edit?" param="edit-link">Edit User</a>
+          </header>
+    
+          <section param="content-body">
+            <field-list fields="email_address" param/>
+          </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="edit-page" for="User">
+  <page merge title="Edit User">
+
+    <body: class="edit-page user" param/>
+
+    <content:>
+      <section param="content-header">
+        <h2 param="heading">Edit <type-name/></h2>
+        <delete-button label="Remove This User" param/>
+      </section>
+
+      <section param="content-body">
+        <form param/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+
+<def tag="signup-page" polymorphic/>
+<def tag="signup-page" for="User">
+
+  <page title="Signup" merge>
+
+    <body: class="lifecycle-start-page signup-page" param/>
+
+    <content: param>
+      <header param="content-header">
+        <h2 param="heading">Signup</h2>
+      </header>
+
+      <section param="content-body">
+        <signup-form param="form"/>
+      </section>
+    </content:>
+
+  </page>
+</def>
+
+<def tag="reset-password-page" polymorphic/>
+<def tag="reset-password-page" for="User">
+  <page title="Reset Password" merge>
+    
+    <body: class="lifecycle-transition-page reset-password-page" param/>
+    
+    <content:>
+      <header param="content-header">
+        <h2 param="heading">Reset Password</h2>
+      </header>
+      
+      <section param="content-body">
+        <reset-password-form param="form"/>
+      </section>
+    </content:>
+    
+  </page>
+</def>
+
+

@@ -1,0 +1,40 @@
+<!-- AUTOMATICALLY GENERATED FILE - DO NOT EDIT -->
+
+<def tag="card" for="Question">
+  <card class="question" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+    <body: param>
+      <count:responses param/>
+    </body:>
+  </card>
+</def>
+
+<def tag="card" for="Response">
+  <card class="response" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+
+<def tag="card" for="Survey">
+  <card class="survey" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+    <body: param>
+      <count:questions param/>
+    </body:>
+  </card>
+</def>
+
+<def tag="card" for="User">
+  <card class="user" param="default" merge>
+    <header: param>
+      <h4 param="heading"><a><name/></a></h4>
+    </header:>
+  </card>
+</def>
+

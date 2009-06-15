@@ -1,0 +1,12 @@
+#Configuration file for the Adhearsion Survey comopnent
+:sound_dir: /var/lib/asterisk/sounds/surveys/
+:retries: 3
+
+#Options for the engine are:
+# - cepstral
+# - festival
+# - osx_say
+:engine: osx_say
+
+#Right now only used for osx_say
+:voice: Alex

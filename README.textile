@@ -1,0 +1,100 @@
+h1. surveys
+
+* <a href="http://jsgoecke.github.com/surveys">http://jsgoecke.github.com/surveys</a>
+
+h2. Description
+
+Provides an example Adhearsion component that conducts call surveys. The component also provides a Rails GUI.
+
+h2. Requirements
+
+* <a href="http://adhearsion.com">Adhearsion v0.8+</a>
+* <a href="http://www.rubyonrails.org">Ruby on Rails v2.2.2</a>
+* A text to speech engine: Festival, Cepstral/VoiceForge or PlainTalk/Say
+
+h2. Install
+
+In the ~ahn_project/components directory:
+
+<pre>git clone git://github.com/jsgoecke/surveys.git</pre>
+
+h2. Configuration
+
+There is an included example SQLite3 database with data in the development environment of the Rails GUI. You may simply use this, the user details are:
+
+<pre>
+username: jason@adhearsion.com
+passwd: sunnyday</pre>
+	
+You will need to connect and setup the Rails database to configure your surveys by doing the following:
+
+<pre>cd ~ahn-project/components/surveys/gui/config</pre>
+<pre>Edit the database.yml file to connect to your database</pre>
+<pre>cd ~ahn-project/</pre>
+<pre>rake db:migrate</pre>
+<pre>script/server</pre>
+
+Then you must also configure your Adhearsion application to use the <a href="http://docs.adhearsion.com/display/adhearsion/Ruby+on+Rails+Integration" target="_blank">Rails integration</a> as follows:
+
+<pre>cd ~ahn-project/config</pre>
+<pre>Edit the startup.rb file</pre>
+<pre>config.enable_rails :path => 'components/surveys/gui', :env => :development</pre>
+
+h2. Example
+
+Here is an example for your dialplan.rb:
+
+<pre>
+<code>
+surveys {
+  #Play ringback to the caller
+  execute('Ringing')
+
+  #Build the menu in another thread so that we may get on to welcoming
+  #The customer
+  get_menu_thread = Thread.new do
+    @questions_to_ask = surveys_build_questions("New Accounts")
+    #Create a new tag for this call to uniquely group the responses
+    @tag = new_guid
+  end
+
+  #Play the welcome message with the company name
+  play surveys_build_welcome("ACME")
+
+  #Wait for the thread to come back with our data
+  get_menu_thread.join
+  sleep(1)
+
+  #Ask the questions and get the reponses
+  surveys_ask_questions(@questions_to_ask, @tag)
+
+  #All done, say thanks!
+  play surveys_build_thankyou("ACME") 
+  hangup
+}
+</code>
+</pre>
+
+h2. License
+
+The MIT License
+ 
+Copyright (c) 2009 Jason Goecke
+ 
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+ 
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+ 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.

@@ -1,0 +1,534 @@
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.2ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (30.2ms)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (1.8ms)[0m   [0mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;35;1mSQL (0.3ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to HoboMigration1 (20090115162912)
+  [4;35;1mSQL (0.5ms)[0m   [0mCREATE TABLE "questions" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "survey_id" integer, "name" varchar(255), "question" text, "order" integer, "valid_responses" varchar(255), "active" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "responses" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "question_id" integer, "callerid" varchar(255), "guid" varchar(255), "response" integer, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mCREATE TABLE "surveys" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar(255), "description" text, "active" boolean, "created_at" datetime, "updated_at" datetime) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "crypted_password" varchar(40), "salt" varchar(40), "remember_token" varchar(255), "remember_token_expires_at" datetime, "name" varchar(255), "email_address" varchar(255), "administrator" boolean DEFAULT 'f', "created_at" datetime, "updated_at" datetime, "state" varchar(255) DEFAULT 'active', "key_timestamp" datetime) [0m
+  [4;35;1mSQL (0.2ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20090115162912')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("questions")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("responses")[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("surveys")[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mPRAGMA index_list("users")[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing FrontController#index (for 127.0.0.1 at 2009-06-15 10:40:23) [GET]
+Rendering front/index
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/core.dryml in 0.02s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_core.dryml in 0.18s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_support.dryml in 0.01s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_document_tags.dryml in 0.03s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_pages.dryml in 0.19s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_editing.dryml in 0.10s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_forms.dryml in 0.20s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_navigation.dryml in 0.10s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_plus.dryml in 0.07s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_generics.dryml in 0.02s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_lifecycles.dryml in 0.01s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid.dryml in 1.04s
+  DRYML: Compiled app/views/taglibs/auto/rapid/cards.dryml in 0.11s
+  DRYML: Compiled app/views/taglibs/auto/rapid/pages.dryml in 0.39s
+  DRYML: Compiled app/views/taglibs/auto/rapid/forms.dryml in 0.05s
+  DRYML: Compiled app/views/taglibs/themes/clean/clean.dryml in 0.01s
+  DRYML: Compiled app/views/taglibs/application.dryml in 1.63s
+  DRYML: Compiled app/views/front/index.dryml in 1.76s
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM "users" LIMIT 30[0m
+Completed in 2019ms (View: 1953, DB: 0) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing UsersController#login (for 127.0.0.1 at 2009-06-15 10:40:29) [GET]
+  Parameters: {"action"=>"login", "controller"=>"users"}
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_user_pages.dryml in 0.17s
+Completed in 354ms (View: 350, DB: 1) | 200 OK [http://localhost/login]
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing FrontController#index (for 127.0.0.1 at 2009-06-15 10:40:33) [GET]
+Rendering front/index
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+Completed in 216ms (View: 212, DB: 1) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.8ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing UsersController#signup (for 127.0.0.1 at 2009-06-15 10:40:35) [GET]
+  Parameters: {"action"=>"signup", "controller"=>"users"}
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+Completed in 254ms (View: 249, DB: 1) | 200 OK [http://localhost/users/signup]
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing UsersController#do_signup (for 127.0.0.1 at 2009-06-15 10:40:59) [POST]
+  Parameters: {"user"=>{"name"=>"Administrator", "password_confirmation"=>"[FILTERED]", "password"=>"[FILTERED]", "email_address"=>"admin@administrator.com"}, "page_path"=>"users/signup", "action"=>"do_signup", "authenticity_token"=>"UurxnlJ0Bngke8KEbTExd/n6J+1SkxE3SbbaYcSSb7s=", "controller"=>"users"}
+  [4;36;1mUser Exists (0.2ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."name" = 'Administrator') LIMIT 1[0m
+  [4;35;1mUser Exists (0.1ms)[0m   [0mSELECT "users".id FROM "users" WHERE (LOWER("users"."email_address") = 'admin@administrator.com') LIMIT 1[0m
+  [4;36;1mUser Exists (0.1ms)[0m   [0;1mSELECT "users".id FROM "users" WHERE ("users"."email_address" = 'admin@administrator.com') LIMIT 1[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT count(*) AS count_all FROM "users" [0m
+  [4;36;1mUser Create (0.6ms)[0m   [0;1mINSERT INTO "users" ("salt", "name", "key_timestamp", "updated_at", "crypted_password", "remember_token_expires_at", "administrator", "remember_token", "email_address", "created_at", "state") VALUES('840a2563b566f0b048374b17619ff8baca2995fe', 'Administrator', NULL, '2009-06-15 17:40:59', '9dd20e6c38294b86c6a9ba15fb237dc7bfc08b68', NULL, 't', NULL, 'admin@administrator.com', '2009-06-15 17:40:59', 'active')[0m
+Redirected to http://localhost:3000
+Completed in 162ms (DB: 2) | 302 Found [http://localhost/users/signup]
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing FrontController#index (for 127.0.0.1 at 2009-06-15 10:41:00) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering front/index
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" LIMIT 30[0m
+Completed in 167ms (View: 164, DB: 2) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing FrontController#index (for 127.0.0.1 at 2009-06-15 10:43:28) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering front/index
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/core.dryml in 0.07s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_core.dryml in 0.17s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_support.dryml in 0.01s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_document_tags.dryml in 0.03s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_pages.dryml in 0.19s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_editing.dryml in 0.07s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_forms.dryml in 0.20s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_navigation.dryml in 0.10s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_plus.dryml in 0.07s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_generics.dryml in 0.02s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_lifecycles.dryml in 0.01s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid.dryml in 0.95s
+  DRYML: Compiled app/views/taglibs/auto/rapid/cards.dryml in 0.10s
+  DRYML: Compiled app/views/taglibs/auto/rapid/pages.dryml in 0.39s
+  DRYML: Compiled app/views/taglibs/auto/rapid/forms.dryml in 0.05s
+  DRYML: Compiled app/views/taglibs/themes/clean/clean.dryml in 0.01s
+  DRYML: Compiled app/views/taglibs/application.dryml in 1.52s
+  DRYML: Compiled app/views/front/index.dryml in 1.62s
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+Completed in 1775ms (View: 1771, DB: 1) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing SurveysController#index (for 127.0.0.1 at 2009-06-15 10:43:35) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mSurvey Load (0.6ms)[0m   [0mSELECT * FROM "surveys" LIMIT 30 OFFSET 0[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+Completed in 213ms (View: 207, DB: 2) | 200 OK [http://localhost/surveys]
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing ResponsesController#index (for 127.0.0.1 at 2009-06-15 10:43:37) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mResponse Load (0.1ms)[0m   [0mSELECT * FROM "responses" LIMIT 30 OFFSET 0[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+Completed in 151ms (View: 146, DB: 1) | 200 OK [http://localhost/responses]
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing QuestionsController#index (for 127.0.0.1 at 2009-06-15 10:43:38) [GET]
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mQuestion Load (0.2ms)[0m   [0mSELECT * FROM "questions" LIMIT 30 OFFSET 0[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+Completed in 164ms (View: 159, DB: 2) | 200 OK [http://localhost/questions]
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing FrontController#index (for 127.0.0.1 at 2009-06-15 10:43:39) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering front/index
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" LIMIT 30[0m
+Completed in 214ms (View: 210, DB: 1) | 200 OK [http://localhost/]
+  [4;36;1mSQL (1.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing FrontController#index (for 127.0.0.1 at 2009-06-15 10:45:02) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering front/index
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/core.dryml in 0.07s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_core.dryml in 0.17s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_support.dryml in 0.01s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_document_tags.dryml in 0.03s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_pages.dryml in 0.18s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_editing.dryml in 0.05s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_forms.dryml in 0.21s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_navigation.dryml in 0.10s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_plus.dryml in 0.07s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_generics.dryml in 0.02s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_lifecycles.dryml in 0.01s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid.dryml in 0.85s
+  DRYML: Compiled app/views/taglibs/auto/rapid/cards.dryml in 0.10s
+  DRYML: Compiled app/views/taglibs/auto/rapid/pages.dryml in 0.39s
+  DRYML: Compiled app/views/taglibs/auto/rapid/forms.dryml in 0.05s
+  DRYML: Compiled app/views/taglibs/themes/clean/clean.dryml in 0.01s
+  DRYML: Compiled app/views/taglibs/application.dryml in 1.41s
+  DRYML: Compiled app/views/front/index.dryml in 1.49s
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+Completed in 1535ms (View: 1531, DB: 1) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing QuestionsController#index (for 127.0.0.1 at 2009-06-15 10:45:08) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mQuestion Load (0.2ms)[0m   [0mSELECT * FROM "questions" LIMIT 30 OFFSET 0[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+Completed in 162ms (View: 157, DB: 2) | 200 OK [http://localhost/questions]
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing ResponsesController#index (for 127.0.0.1 at 2009-06-15 10:45:09) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mResponse Load (0.1ms)[0m   [0mSELECT * FROM "responses" LIMIT 30 OFFSET 0[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+Completed in 170ms (View: 165, DB: 2) | 200 OK [http://localhost/responses]
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing SurveysController#index (for 127.0.0.1 at 2009-06-15 10:45:10) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mSurvey Load (0.2ms)[0m   [0mSELECT * FROM "surveys" LIMIT 30 OFFSET 0[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+Completed in 164ms (View: 158, DB: 2) | 200 OK [http://localhost/surveys]
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing SurveysController#new (for 127.0.0.1 at 2009-06-15 10:48:17) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/core.dryml in 0.03s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_core.dryml in 0.11s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_support.dryml in 0.07s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_document_tags.dryml in 0.03s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_pages.dryml in 0.18s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_editing.dryml in 0.09s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_forms.dryml in 0.21s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_navigation.dryml in 0.03s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_plus.dryml in 0.13s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_generics.dryml in 0.02s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid_lifecycles.dryml in 0.01s
+  DRYML: Compiled /Library/Ruby/Gems/1.8/gems/hobo-0.8.7/taglibs/rapid.dryml in 0.92s
+  DRYML: Compiled app/views/taglibs/auto/rapid/cards.dryml in 0.03s
+  DRYML: Compiled app/views/taglibs/auto/rapid/pages.dryml in 0.39s
+  DRYML: Compiled app/views/taglibs/auto/rapid/forms.dryml in 0.13s
+  DRYML: Compiled app/views/taglibs/themes/clean/clean.dryml in 0.01s
+  DRYML: Compiled app/views/taglibs/application.dryml in 1.55s
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+Completed in 1868ms (View: 1864, DB: 1) | 200 OK [http://localhost/surveys/new]
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing SurveysController#create (for 127.0.0.1 at 2009-06-15 10:48:46) [POST]
+  Parameters: {"page_path"=>"surveys/new", "authenticity_token"=>"UurxnlJ0Bngke8KEbTExd/n6J+1SkxE3SbbaYcSSb7s=", "survey"=>{"name"=>"Customer Satisfaction", "description"=>"A post call survey to ask the customer how their experience was on this call with the call center.", "active"=>"0"}}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mSurvey Exists (0.2ms)[0m   [0mSELECT "surveys".id FROM "surveys" WHERE ("surveys"."name" = 'Customer Satisfaction') LIMIT 1[0m
+  [4;36;1mSurvey Create (0.5ms)[0m   [0;1mINSERT INTO "surveys" ("name", "updated_at", "description", "active", "created_at") VALUES('Customer Satisfaction', '2009-06-15 17:48:46', 'A post call survey to ask the customer how their experience was on this call with the call center.', 'f', '2009-06-15 17:48:46')[0m
+Redirected to http://localhost:3000/surveys/1-customer-satisfaction
+Completed in 142ms (DB: 2) | 302 Found [http://localhost/surveys]
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing SurveysController#show (for 127.0.0.1 at 2009-06-15 10:48:47) [GET]
+  Parameters: {"id"=>"1-customer-satisfaction"}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mSurvey Load (0.2ms)[0m   [0mSELECT * FROM "surveys" WHERE ("surveys"."id" = 1) [0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSELECT count(*) AS count_all FROM "questions" WHERE ("questions".survey_id = 1) [0m
+Completed in 222ms (View: 218, DB: 2) | 200 OK [http://localhost/surveys/1-customer-satisfaction]
+  [4;36;1mSQL (0.8ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing QuestionsController#index (for 127.0.0.1 at 2009-06-15 10:48:50) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mQuestion Load (0.1ms)[0m   [0;1mSELECT * FROM "questions" LIMIT 30 OFFSET 0[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" LIMIT 30[0m
+Completed in 231ms (View: 226, DB: 2) | 200 OK [http://localhost/questions]
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing QuestionsController#new (for 127.0.0.1 at 2009-06-15 10:48:52) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+  [4;35;1mSurvey Load (0.4ms)[0m   [0mSELECT * FROM "surveys" LIMIT 100[0m
+Completed in 341ms (View: 336, DB: 2) | 200 OK [http://localhost/questions/new]
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing QuestionsController#create (for 127.0.0.1 at 2009-06-15 10:50:00) [POST]
+  Parameters: {"page_path"=>"questions/new", "authenticity_token"=>"UurxnlJ0Bngke8KEbTExd/n6J+1SkxE3SbbaYcSSb7s=", "question"=>{"name"=>"Agent Knowledge", "order"=>"1", "survey_id"=>"1", "valid_responses"=>"1..5", "question"=>"On a scale from 1 to 5, 1 being poor, 5 being excellent, please rate the experience level of the agent you spoke with.", "active"=>"0"}}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mQuestion Create (0.5ms)[0m   [0;1mINSERT INTO "questions" ("name", "updated_at", "order", "survey_id", "valid_responses", "question", "active", "created_at") VALUES('Agent Knowledge', '2009-06-15 17:50:00', 1, 1, '1..5', 'On a scale from 1 to 5, 1 being poor, 5 being excellent, please rate the experience level of the agent you spoke with.', 'f', '2009-06-15 17:50:00')[0m
+Redirected to http://localhost:3000/questions/1-agent-knowledge
+Completed in 16ms (DB: 1) | 302 Found [http://localhost/questions]
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing QuestionsController#show (for 127.0.0.1 at 2009-06-15 10:50:01) [GET]
+  Parameters: {"id"=>"1-agent-knowledge"}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mQuestion Load (0.3ms)[0m   [0mSELECT * FROM "questions" WHERE ("questions"."id" = 1) [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+  [4;35;1mSurvey Load (0.3ms)[0m   [0mSELECT * FROM "surveys" WHERE ("surveys"."id" = 1) [0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT count(*) AS count_all FROM "responses" WHERE ("responses".question_id = 1) [0m
+Completed in 264ms (View: 258, DB: 2) | 200 OK [http://localhost/questions/1-agent-knowledge]
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing QuestionsController#index (for 127.0.0.1 at 2009-06-15 10:50:10) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mQuestion Load (0.3ms)[0m   [0mSELECT * FROM "questions" LIMIT 30 OFFSET 0[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+  [4;35;1mResponse Load (0.2ms)[0m   [0mSELECT * FROM "responses" WHERE ("responses".question_id = 1) [0m
+Completed in 234ms (View: 228, DB: 2) | 200 OK [http://localhost/questions]
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing QuestionsController#new (for 127.0.0.1 at 2009-06-15 10:50:12) [GET]
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mUser Load (1.4ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+  [4;35;1mSurvey Load (0.8ms)[0m   [0mSELECT * FROM "surveys" LIMIT 100[0m
+Completed in 472ms (View: 465, DB: 4) | 200 OK [http://localhost/questions/new]
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing QuestionsController#create (for 127.0.0.1 at 2009-06-15 10:50:22) [POST]
+  Parameters: {"page_path"=>"questions/new", "authenticity_token"=>"UurxnlJ0Bngke8KEbTExd/n6J+1SkxE3SbbaYcSSb7s=", "question"=>{"name"=>"Overall Experience", "order"=>"2", "survey_id"=>"1", "valid_responses"=>"1..5", "question"=>"", "active"=>"0"}}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering questions/new
+  [4;36;1mUser Load (0.6ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+  [4;35;1mSurvey Load (1.1ms)[0m   [0mSELECT * FROM "surveys" WHERE ("surveys"."id" = 1) [0m
+  [4;36;1mSurvey Load (0.5ms)[0m   [0;1mSELECT * FROM "surveys" LIMIT 100[0m
+Completed in 570ms (View: 414, DB: 3) | 200 OK [http://localhost/questions]
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing QuestionsController#index (for 127.0.0.1 at 2009-06-15 10:51:57) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mQuestion Load (0.3ms)[0m   [0mSELECT * FROM "questions" LIMIT 30 OFFSET 0[0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+  [4;35;1mResponse Load (0.2ms)[0m   [0mSELECT * FROM "responses" WHERE ("responses".question_id = 1) [0m
+Completed in 1756ms (View: 1751, DB: 2) | 200 OK [http://localhost/questions]
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing QuestionsController#show (for 127.0.0.1 at 2009-06-15 10:52:01) [GET]
+  Parameters: {"id"=>"1-agent-knowledge"}
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mQuestion Load (0.5ms)[0m   [0;1mSELECT * FROM "questions" WHERE ("questions"."id" = 1) [0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" LIMIT 30[0m
+  [4;36;1mSurvey Load (0.3ms)[0m   [0;1mSELECT * FROM "surveys" WHERE ("surveys"."id" = 1) [0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT count(*) AS count_all FROM "responses" WHERE ("responses".question_id = 1) [0m
+Completed in 297ms (View: 291, DB: 3) | 200 OK [http://localhost/questions/1-agent-knowledge]
+  [4;36;1mSQL (0.6ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing QuestionsController#create (for 127.0.0.1 at 2009-06-15 10:52:23) [POST]
+  Parameters: {"page_path"=>"questions/new", "authenticity_token"=>"UurxnlJ0Bngke8KEbTExd/n6J+1SkxE3SbbaYcSSb7s=", "question"=>{"name"=>"Overall Experience", "order"=>"2", "survey_id"=>"1", "valid_responses"=>"1..5", "question"=>"On a scale from 1 to 5, 1 being poor, 5 being excellent, please rate your overall experience on this call.", "active"=>"0"}}
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;36;1mQuestion Create (0.5ms)[0m   [0;1mINSERT INTO "questions" ("name", "updated_at", "order", "survey_id", "valid_responses", "question", "active", "created_at") VALUES('Overall Experience', '2009-06-15 17:52:23', 2, 1, '1..5', 'On a scale from 1 to 5, 1 being poor, 5 being excellent, please rate your overall experience on this call.', 'f', '2009-06-15 17:52:23')[0m
+Redirected to http://localhost:3000/questions/2-overall-experience
+Completed in 26ms (DB: 2) | 302 Found [http://localhost/questions]
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing QuestionsController#show (for 127.0.0.1 at 2009-06-15 10:52:23) [GET]
+  Parameters: {"id"=>"2-overall-experience"}
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mQuestion Load (0.3ms)[0m   [0mSELECT * FROM "questions" WHERE ("questions"."id" = 2) [0m
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+  [4;35;1mSurvey Load (0.4ms)[0m   [0mSELECT * FROM "surveys" WHERE ("surveys"."id" = 1) [0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT count(*) AS count_all FROM "responses" WHERE ("responses".question_id = 2) [0m
+Completed in 179ms (View: 174, DB: 2) | 200 OK [http://localhost/questions/2-overall-experience]
+  [4;35;1mSurvey Load (0.3ms)[0m   [0mSELECT * FROM "surveys" WHERE ("surveys"."name" = 'Customer Satisfaction') LIMIT 1[0m
+  [4;36;1mQuestion Load (0.6ms)[0m   [0;1mSELECT * FROM "questions" WHERE ("questions".survey_id = 1) [0m
+  [4;35;1mSQL (0.7ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing ResponsesController#index (for 127.0.0.1 at 2009-06-15 11:07:43) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+  [4;35;1mResponse Load (2.0ms)[0m   [0mSELECT * FROM "responses" LIMIT 30 OFFSET 0[0m
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+Completed in 616ms (View: 602, DB: 4) | 200 OK [http://localhost/responses]
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing FrontController#index (for 127.0.0.1 at 2009-06-15 11:07:49) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering front/index
+  DRYML: Compiled app/views/front/index.dryml in 0.15s
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" LIMIT 30[0m
+Completed in 1018ms (View: 1013, DB: 1) | 200 OK [http://localhost/]
+  [4;36;1mSQL (19.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing FrontController#index (for 127.0.0.1 at 2009-06-15 11:16:29) [GET]
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering front/index
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+Completed in 291ms (View: 287, DB: 20) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing FrontController#index (for 127.0.0.1 at 2009-06-15 11:16:52) [GET]
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering front/index
+  [4;35;1mUser Load (0.5ms)[0m   [0mSELECT * FROM "users" LIMIT 30[0m
+Completed in 179ms (View: 175, DB: 1) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.7ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing FrontController#index (for 127.0.0.1 at 2009-06-15 11:17:06) [GET]
+  [4;35;1mUser Load (1.8ms)[0m   [0mSELECT * FROM "users" WHERE ("users"."id" = 1) [0m
+Rendering front/index
+  [4;36;1mUser Load (0.4ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+Completed in 278ms (View: 271, DB: 3) | 200 OK [http://localhost/]
+  [4;35;1mSQL (0.6ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing FrontController#index (for 127.0.0.1 at 2009-06-15 11:19:49) [GET]
+Rendering front/index
+  [4;36;1mUser Load (90.4ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+Completed in 2304ms (View: 153, DB: 91) | 200 OK [http://localhost/]
+  [4;35;1mSQL (270.1ms)[0m   [0m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+
+
+Processing FrontController#index (for 127.0.0.1 at 2009-06-15 11:23:49) [GET]
+Rendering front/index
+  [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" LIMIT 30[0m
+Completed in 1469ms (View: 1464, DB: 271) | 200 OK [http://localhost/]
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSurvey Load (0.2ms)[0m   [0mSELECT * FROM "surveys" WHERE ("surveys"."name" = 'Customer Satisfaction') LIMIT 1[0m
+  [4;36;1mQuestion Load (0.6ms)[0m   [0;1mSELECT * FROM "questions" WHERE ("questions".survey_id = 1) [0m
+  [4;35;1mResponse Create (1.1ms)[0m   [0mINSERT INTO "responses" ("response", "updated_at", "question_id", "guid", "callerid", "created_at") VALUES(1, '2009-06-15 19:02:08', 1, 'hq4VzN8t-hLSI-23lE-QA7s-QAcEtxyBNL7z', 5678, '2009-06-15 19:02:08')[0m
+  [4;36;1mResponse Create (0.7ms)[0m   [0;1mINSERT INTO "responses" ("response", "updated_at", "question_id", "guid", "callerid", "created_at") VALUES(2, '2009-06-15 19:02:17', 2, 'hq4VzN8t-hLSI-23lE-QA7s-QAcEtxyBNL7z', 5678, '2009-06-15 19:02:17')[0m

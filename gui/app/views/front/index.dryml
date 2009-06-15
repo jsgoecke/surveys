@@ -1,0 +1,17 @@
+<page title="Home">
+
+  <body: class="front-page"/>
+
+  <content:>
+    <header class="content-header">
+      <h1>Welcome to <app-name/></h1>
+      <section class="welcome-message">
+        <h3>This application may be used to provide IVR services for conducting post call surveys.</h3>
+      </section>
+    </header>
+
+    <section class="content-body">
+    </section>
+  </content:>
+  
+</page>
